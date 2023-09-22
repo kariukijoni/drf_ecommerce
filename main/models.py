@@ -7,12 +7,15 @@ class Vendor(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     address=models.TextField(null=True)
     
+    def __str__(self):
+        return self.user.username
+    
 class ProductCategory(models.Model):
     title=models.CharField(max_length=200)
     detail=models.TextField(null=True)
     
     def __str__(self):
-        self.title
+        return self.title
         
 class Price(models.Model):
     title=models.CharField(max_length=200)
