@@ -113,11 +113,30 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+""" http post http: // 127.0.0.1: 8000/api/token / username = admin password = al
+
+ACCESS
+ http http://127.0.0.1:8000/api/vendors/ "Authorization:Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1NDMxNzg4LCJpYXQiOjE2OTU0Mjk5MzMsImp0aSI6ImY4OTllZjU0MTMyNTRmMjBiNDhhNGRkMzY2ODdjNGFiIiwidXNlcl9pZCI6MX0.Nk91V6ju_w7Qo-Lp9tODseUJdJcAam64pI6jw_jWvH4"
+
+REFRESH
+http http://127.0.0.1:8000/api/token/refresh/ "refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTUxNjMzMywiaWF0IjoxNjk1NDI5OTMzLCJqdGkiOiIxMzc0OTZiMTNkM2M0OTUzYjI0ODYyMTQ4ZDgyYjk4OSIsInVzZXJfaWQiOjF9.htMh97RA50jhxk7UlxCb57AMZtJUuiLcQzoyfKfVLO4"
+
+
+acess = Authorization: Bearer
+{
+    http post http: // 127.0.0.1: 8000/api/vendors/ " Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk1NDMwMjMzLCJpYXQiOjE2OTU0Mjk5MzMsImp0aSI6IjM0NzhmMjVhNDU2NDQ5YzI5ZjQzMDExZjRkNTk1NTMwIiwidXNlcl9pZCI6MX0.JM55hNimt2GSVIYL74xD5xom4eMkbtS9dAVTHtiyn30",
+    http post http: // 127.0.0.1: 8000/api/token/refresh/ refresh=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NTUxNjMzMywiaWF0IjoxNjk1NDI5OTMzLCJqdGkiOiIxMzc0OTZiMTNkM2M0OTUzYjI0ODYyMTQ4ZDgyYjk4OSIsInVzZXJfaWQiOjF9.htMh97RA50jhxk7UlxCb57AMZtJUuiLcQzoyfKfVLO4"
+}
+"""
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
 }
 
 
