@@ -3,8 +3,8 @@ from main.serializers import (VendorSerializer, VendorDetailSerializer,
                               ProductSerializer, ProductDetailSerializer,
                               CustomerSerializer, CustomerDetailSerializer,
                               OrderSerializer, OrderDetailSerializer,
-                              CustomerAddressSerializer)
-from main.models import Vendor, Product, Customer, Order, OrderItems, CustomerAddress
+                              CustomerAddressSerializer, ProductRatingSerializer)
+from main.models import Vendor, Product, Customer, Order, OrderItems, CustomerAddress, ProductRating
 from rest_framework import generics, permissions, viewsets
 # Create your views here.
 
@@ -62,3 +62,8 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
 class CustomerAddressViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerAddressSerializer
     queryset = CustomerAddress.objects.all()
+
+
+class ProductRatingViewSet(viewsets.ModelViewSet):
+    serializer_class = ProductRatingSerializer
+    queryset = ProductRating.objects.all()
