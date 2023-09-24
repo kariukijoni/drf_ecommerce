@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from main.serializers import VendorSerializer, VendorDetailSerializer, ProductSerializer, ProductDetailSerializer, CustomerSerializer, CustomerDetailSerializer
-from main.models import Vendor, Product, Customer
+from main.serializers import (VendorSerializer, VendorDetailSerializer,
+                              ProductSerializer, ProductDetailSerializer,
+                              CustomerSerializer, CustomerDetailSerializer,
+                              OrderSerializer, OrderDetailSerializer)
+from main.models import Vendor, Product, Customer, Order, OrderItems
 from rest_framework import generics, permissions
 # Create your views here.
 
@@ -35,3 +38,21 @@ class CustomerList(generics.ListCreateAPIView):
 class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerDetailSerializer
+
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    # permission_classes=[permissions.IsAuthenticated]
+
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    # queryset = OrderItems.objects.all()
+    serializer_class = OrderDetailSerializer
+
+    def get_queryset(self):
+        order_id = self.kwargs['pk']
+        order = Order.objects.get(id=order_id)
+        order_items = OrderItems.objects.filter(order=order)
+
+        return order_items
