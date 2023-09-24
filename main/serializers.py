@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Vendor, Product, Customer, Order, OrderItems
+from .models import Vendor, Product, Customer, Order, OrderItems, CustomerAddress
 
 
 class VendorSerializer(serializers.ModelSerializer):
@@ -60,4 +60,11 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItems
         fields = ['id', 'order', 'product']
+        depth = 1
+
+
+class CustomerAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerAddress
+        fields = ['id', 'customer', 'address', 'default_address']
         depth = 1

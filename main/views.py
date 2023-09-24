@@ -2,9 +2,10 @@ from django.shortcuts import render
 from main.serializers import (VendorSerializer, VendorDetailSerializer,
                               ProductSerializer, ProductDetailSerializer,
                               CustomerSerializer, CustomerDetailSerializer,
-                              OrderSerializer, OrderDetailSerializer)
-from main.models import Vendor, Product, Customer, Order, OrderItems
-from rest_framework import generics, permissions
+                              OrderSerializer, OrderDetailSerializer,
+                              CustomerAddressSerializer)
+from main.models import Vendor, Product, Customer, Order, OrderItems, CustomerAddress
+from rest_framework import generics, permissions, viewsets
 # Create your views here.
 
 
@@ -56,3 +57,8 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
         order_items = OrderItems.objects.filter(order=order)
 
         return order_items
+
+
+class CustomerAddressViewSet(viewsets.ModelViewSet):
+    serializer_class = CustomerAddressSerializer
+    queryset = CustomerAddress.objects.all()
