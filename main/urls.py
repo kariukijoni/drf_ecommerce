@@ -17,6 +17,10 @@ urlpatterns = [
     # orders
     path('orders/', views.OrderList.as_view()),
     path('orders/<int:pk>', views.OrderDetail.as_view()),
+    # Categories
+    path('categories/', views.CategoryList.as_view()),
+    path('categories/<int:pk>', views.CategoryDetail.as_view()),
+
 
 ]
 urlpatterns += router.urls

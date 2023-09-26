@@ -89,7 +89,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
         fields = ['id', 'title', 'detail']
-        # depth = 1
+        depth = 1
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
