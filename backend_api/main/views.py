@@ -73,6 +73,7 @@ class ProductRatingViewSet(viewsets.ModelViewSet):
 class CategoryList(generics.ListCreateAPIView):
     queryset = ProductCategory.objects.all()
     serializer_class = CategorySerializer
+    # permission_classes=[permissions.IsAuthenticated]
 
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
